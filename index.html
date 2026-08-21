@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070905" />
+  <title>VERITY: Nightwatch</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main id="game-shell" aria-label="VERITY Nightwatch">
+    <canvas id="game" width="960" height="540" aria-label="Área do jogo em primeira pessoa"></canvas>
+
+    <div id="vignette" aria-hidden="true"></div>
+    <div id="static" aria-hidden="true"></div>
+    <div id="flash" aria-hidden="true"></div>
+    <div id="crosshair" aria-hidden="true"><span></span><span></span></div>
+
+    <section id="hud" aria-live="polite">
+      <div class="hud-cluster hud-top-left">
+        <div class="objective-chip">
+          <span class="eyebrow">OBJETIVO</span>
+          <strong id="objective">Restabeleça os relés da estação</strong>
+          <small id="progress">0 / 4 ativos</small>
+        </div>
+      </div>
+
+      <div class="hud-cluster hud-top-right">
+        <div class="meter"><span>LANTERNA</span><i><b id="battery-bar"></b></i><em id="battery-text">100%</em></div>
+        <div class="meter"><span>FÔLEGO</span><i><b id="stamina-bar"></b></i><em id="stamina-text">100%</em></div>
+      </div>
+
+      <div id="prompt" class="prompt hidden"></div>
+      <div id="subtitle" class="subtitle hidden"></div>
+      <div id="status-line" class="status-line">NOITE 01 // SETOR A</div>
+    </section>
+
+    <section id="intro" class="panel-screen visible" aria-label="Tela inicial">
+      <div class="panel-card intro-card">
+        <p class="kicker">ARQUIVO #001</p>
+        <h1>VERITY<span>: NIGHTWATCH</span></h1>
+        <p class="lead">Você foi enviado para religar quatro relés numa estação florestal abandonada. O sistema de assistência local ainda está ativo.</p>
+        <div class="verity-mark" aria-hidden="true"><span>^ ^</span><b>⌣</b></div>
+        <p class="warning">“Olá. Eu sou Verity. Posso ajudar.”</p>
+        <div class="controls-grid">
+          <span><kbd>WASD</kbd> mover</span>
+          <span><kbd>Mouse</kbd> olhar</span>
+          <span><kbd>Shift</kbd> correr</span>
+          <span><kbd>E</kbd> interagir</span>
+          <span><kbd>F</kbd> lanterna</span>
+          <span><kbd>Esc</kbd> soltar mouse</span>
+        </div>
+        <button id="start-btn" class="primary-btn">ENTRAR NA ESTAÇÃO</button>
+        <small class="fan-note">Projeto de fã independente. Arte, áudio e código originais, sem assets copiados do mod.</small>
+      </div>
+    </section>
+
+    <section id="pause" class="panel-screen" aria-label="Jogo pausado">
+      <div class="panel-card compact-card">
+        <p class="kicker">SINAL INTERROMPIDO</p>
+        <h2>PAUSADO</h2>
+        <p>Clique na tela para retomar o controle.</p>
+      </div>
+    </section>
+
+    <section id="choice" class="panel-screen" aria-label="Decisão final">
+      <div class="panel-card choice-card">
+        <p class="kicker">CANAL DE MANUTENÇÃO // ACESSO FINAL</p>
+        <h2 id="choice-title">Verity quer entrar na rede principal.</h2>
+        <p id="choice-copy">Ele diz que consegue abrir a saída se você conceder acesso.</p>
+        <div class="choice-actions">
+          <button id="trust-btn" class="primary-btn">CONFIAR EM VERITY</button>
+          <button id="cut-btn" class="danger-btn">CORTAR O SINAL</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="ending" class="panel-screen" aria-label="Fim do jogo">
+      <div class="panel-card ending-card">
+        <p id="ending-kicker" class="kicker">REGISTRO FINAL</p>
+        <h2 id="ending-title">FIM</h2>
+        <p id="ending-copy"></p>
+        <p id="ending-stat" class="ending-stat"></p>
+        <button id="restart-btn" class="primary-btn">JOGAR NOVAMENTE</button>
+      </div>
+    </section>
+
+    <div id="mobile-controls" aria-label="Controles de toque">
+      <div class="touch-pad move-pad">
+        <button data-touch="forward" aria-label="Mover para frente">▲</button>
+        <button data-touch="left" aria-label="Mover para esquerda">◀</button>
+        <button data-touch="back" aria-label="Mover para trás">▼</button>
+        <button data-touch="right" aria-label="Mover para direita">▶</button>
+      </div>
+      <div class="touch-pad action-pad">
+        <button data-touch="look-left" aria-label="Olhar para esquerda">↶</button>
+        <button data-touch="interact" aria-label="Interagir">E</button>
+        <button data-touch="look-right" aria-label="Olhar para direita">↷</button>
+        <button data-touch="flashlight" aria-label="Lanterna">F</button>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="./src/game.js"></script>
+</body>
+</html>
