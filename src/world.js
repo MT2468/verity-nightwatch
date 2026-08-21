@@ -57,7 +57,7 @@ export const RELAYS = [
 
 export const EXIT_NODE = { x: 21.5, y: 21.5 };
 export const PLAYER_START = { x: 2.5, y: 2.5, angle: 0.18 };
-export const VERITY_START = { x: 3.25, y: 2.6 };
+export const VERITY_START = { x: 1.82, y: 3.72 };
 export const SHADOW_START = { x: 21.2, y: 2.2 };
 
 export function tileAt(x, y) {
