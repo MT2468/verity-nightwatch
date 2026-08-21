@@ -1,0 +1,13 @@
+{
+  "name": "verity-nightwatch",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check src/game.js && node --check src/world.js && node --check src/audio.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
